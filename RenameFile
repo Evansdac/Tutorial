@@ -1,0 +1,27 @@
+import java.io.*;
+//A Program with two input sources, keyboard and file. Copies the first two lines of requested file to a new file.
+public class CopyFile {
+
+	public static void main(String[] args) throws Exception{
+		
+		BufferedReader keyb = new BufferedReader(new InputStreamReader(System.in)); //model the keyboard
+		System.out.println("name of file to copy: "); // Ask for file name
+		System.out.flush();  
+		String fileNameOrig = keyb.readLine();
+		String fileNameCopy = fileNameOrig.concat(".copy"); //make a copy file name
+		String s; //store input passed from the original file in s.
+		BufferedReader rdrOrig = new BufferedReader(new InputStreamReader(new FileInputStream((new File(fileNameOrig)))));
+		//model the file input
+		PrintStream psCopy = new PrintStream(new FileOutputStream(new File(fileNameCopy)));
+		//model the file output
+		//Read the first two lines to copy file.
+		s = rdrOrig.readLine();
+		psCopy.println(s);
+		s = rdrOrig.readLine();
+		psCopy.println(s);
+		rdrOrig.close();
+		psCopy.close();
+		
+	}
+
+}
