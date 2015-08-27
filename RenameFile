@@ -1,0 +1,21 @@
+import java.io.*;
+//Renames a file.
+public class RenameFile {
+
+	public static void main(String[] args) throws Exception{
+		BufferedReader keyb = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Please enter your name: ");
+			String input = keyb.readLine();
+		
+		File danFile = new File(input + ".txt");
+		FileOutputStream danFileStream = new FileOutputStream (danFile);
+		PrintStream target = new PrintStream(danFileStream);
+		
+		System.out.println("Please enter your phone number: ");
+		String text = keyb.readLine();
+		target.println(text);
+		target.close();
+		System.out.println("File Created.");
+	}
+
+}
