@@ -1,0 +1,64 @@
+import java.util.*;
+import java.text.*;
+public class HelloWorld {
+//Practice writing methods and calling them for Dogs. Also tested Enum, Times and Sleep.
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Dog rover = new Dog("Rover");
+		rover.size = Dog.DogSize.LARGE;
+		System.out.println("Hello " + rover.size + " Doggy!");
+		rover.barking();
+		rover.setAge(4);
+		rover.setBreed("Alsation");
+		rover.setColor("Purple");
+		
+		Date dNow = new Date();
+		SimpleDateFormat ft = 
+				new SimpleDateFormat ("E 'the' dd.MM.yy 'at' hh:mm:ss a zzz");
+		System.out.println("Current Date: " + ft.format(dNow));
+		
+		
+		try { 
+	         System.out.println(new Date( ) + "\n"); 
+	         Thread.sleep(5*60*10); 
+	         System.out.println(new Date( ) + "\n"); 
+	      } catch (Exception e) { 
+	          System.out.println("Got an exception!"); 
+	      }
+	}
+	
+	
+}
+
+
+class Dog{
+	enum DogSize{SMALL, MEDIUM, LARGE} 
+	DogSize size;
+	String breed;
+	int age;
+	String color;
+	
+	public Dog (String name){
+		System.out.println("Dogs name is " + name);
+	}
+	
+	void barking(){
+		System.out.println("WOOF!");
+	}
+	
+	public void setAge(int n){
+		age = n;
+		System.out.println("The Dog is " + age + " years old.");
+	}
+	
+	public void setBreed(String s){
+		breed = s;
+		System.out.println("The Dog is a " + breed + ".");
+	}
+	
+	public void setColor(String c){
+		color = c;
+		System.out.println("The Dog is " + color + " in color.");
+	}
+	
+}
