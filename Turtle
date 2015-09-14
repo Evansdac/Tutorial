@@ -1,0 +1,153 @@
+
+public class Turtle {
+
+	private boolean penLowered;
+	private boolean[][] world;
+	private int direction;
+	private int x, y;
+	private static final int NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3;
+	
+	public Turtle(int size){
+		world = new boolean[size][size];
+		for(int i = 0; i<world.length ; i++){
+			for(int j =0; j< world[i].length;j++){
+				world[i][j] = false;
+			}
+		}
+		direction = NORTH;
+		x = size/2;
+		y = size/2;
+		world[x][y] = true;
+		penLowered = true;
+		draw(world);
+	}
+	
+	public Turtle(){
+		world = new boolean[10][10];
+		for(int i = 0; i<world.length ; i++){
+			for(int j =0; j< world[i].length;j++){
+				world[i][j] = false;
+			}
+		}
+		direction = NORTH;
+		x = 5;
+		y = 5;
+		world[x][y] = true;
+		penLowered = true;
+		draw(world);
+	}
+	
+	public void turnLeft(){
+		switch (direction){
+		case NORTH:
+			direction = WEST;
+			System.out.println("turned west");
+			break;
+		case EAST:
+			direction = NORTH;
+			System.out.println("turned north");
+			break;
+		case SOUTH:
+			direction = EAST;
+			System.out.println("turned east");
+			break;
+		case WEST:
+			direction = SOUTH;
+			System.out.println("turned south");
+			break;
+		}
+	}
+	
+	public void turnRight(){
+		switch (direction){
+			case NORTH:
+				direction = EAST;
+				System.out.println("turned east");
+				break;
+			case EAST:
+				direction = SOUTH;
+				System.out.println("turned south");
+				break;
+			case SOUTH:
+				direction = WEST;
+				System.out.println("turned west");
+				break;
+			case WEST:
+				direction = NORTH;
+				System.out.println("turned North");
+				break;
+		}
+	}
+	
+	public void forward(int distance){
+		draw(world);
+		for (int i = 0; i<distance; i++){
+			switch (direction){
+			case NORTH:
+				if (x>0){
+					x -= 1;
+					draw(world);
+					System.out.println("moved north");
+				}
+				break;
+			case EAST:
+				if (y< world.length-1){
+					y += 1;
+					draw(world);
+					System.out.println("moved east");
+				}
+				break;
+			case SOUTH:
+				if (x<world.length-1){
+					x += 1;
+					draw(world);
+					System.out.println("moved south");
+				}
+				break;
+			case WEST:
+				if (y>0){
+					y -= 1;
+					draw(world);
+					System.out.println("moved west");
+				}
+				break;
+			}
+		}
+	}
+	
+	public void raisePen(){
+		penLowered = false;
+	}
+	
+	public void lowerPen(){
+		penLowered = true;
+	}
+	
+	private boolean[][] draw(boolean[][] newWorld){
+		if (penLowered) newWorld[x][y] = true;
+		return newWorld;
+	}
+	
+	public void display(){
+		for(int i = 0; i<world.length ; i++){
+			for(int j =0; j< world[i].length;j++){
+				if (world[i][j]) System.out.print("*");
+				else System.out.print("x");
+			}
+			System.out.println("");
+		}
+	}
+	
+	public static void main(String[] args) throws Exception{
+		Turtle t1 = new Turtle();
+		t1.display();
+		t1.forward(0);
+		t1.turnLeft();
+		t1.raisePen();
+		t1.forward(3);
+		t1.turnRight();
+		t1.lowerPen();
+		t1.forward(20);
+		t1.display();
+	}
+}
