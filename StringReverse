@@ -1,0 +1,22 @@
+import java.lang.*;
+import java.io.*;
+
+public class StringReverse {
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] myStrings = new String[3];
+		System.out.println("Please enter 3 Strings: ");
+		int i = 0;
+		while (i!=3){
+			myStrings[i] = br.readLine();
+			i++;
+		}
+		System.out.println("In Reverse order: ");
+		i--;
+		while (i!=-1){
+			System.out.println(myStrings[i]);
+			i--;
+		}
+	}
+}
