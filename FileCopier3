@@ -1,0 +1,25 @@
+import java.io.*;
+
+public class FileCopier3{
+
+	private BufferedReader br;
+	private PrintStream psCopy;
+	private String s1,s2,s3;
+	
+	public FileCopier3(String fileName) throws Exception{
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fileName))));
+		s1 = br.readLine();
+		s2 = br.readLine();
+		s3 = br.readLine();
+		br.close();
+	}
+	
+	public void copyTo(String copyFileName) throws Exception{
+		psCopy = new PrintStream(new FileOutputStream(new File(copyFileName)));
+		psCopy.println(s1);
+		psCopy.println(s2);
+		psCopy.println(s3);
+		psCopy.close();
+	}
+	
+}
