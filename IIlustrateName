@@ -1,0 +1,25 @@
+
+public class IllustrateName {
+
+	public static void main(String[] args) throws Exception{
+		Name n;
+		InteractiveIO io = new InteractiveIO();
+		String first,last,title;
+
+		first = io.promptAndRead("Please enter your first name:");
+		last = io.promptAndRead("Please enter your last name:");
+		title = io.promptAndRead("Please enter your title:");
+		
+		n = new Name(first,last);
+		n.setTitle(title);
+		io.write(first);
+		io.write(last);
+		io.write(title);
+		io.writeln();
+		io.write(n.getInitials());
+		io.write(n.getFirstLast());
+		io.write(n.getLastFirst());
+		
+	}
+
+}
