@@ -1,0 +1,30 @@
+
+public class Name {
+
+	private String first;
+	private String last;
+	private String title;
+	
+	public Name(String first, String last){
+		this.first = first;
+		this.last = last;
+		title = "";
+	}
+	
+	public String getInitials(){
+		return title + " " + first.substring(0,1) + "." + last.substring(0,1) + ".";
+	}
+	
+	public String getLastFirst(){
+		return last + " " + first;
+	}
+	
+	public String getFirstLast(){
+		return first + " " + last;
+	}
+	
+	public void setTitle(String newTitle){
+		title = newTitle;
+	}
+	
+}
